@@ -7,15 +7,16 @@ import com.grid.BookStore.models.Book;
 import com.grid.BookStore.repositories.BookRepository;
 import com.grid.BookStore.services.BookService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
-    private BookRepository bookRepository;
-    private BookMapper bookMapper;
+    private final BookRepository bookRepository;
+    private final BookMapper bookMapper;
 
     @Override
     public BookDto addBook(final Book book) {
