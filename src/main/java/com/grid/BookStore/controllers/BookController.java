@@ -4,10 +4,10 @@ import com.grid.BookStore.dtos.BookDto;
 import com.grid.BookStore.models.Book;
 import com.grid.BookStore.services.BookService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@AllArgsConstructor
 @RestController
-@RequestMapping("/MiniStore")
+@RequestMapping("/mini_store")
 public class BookController {
 
-    @Autowired
     private BookService bookService;
 
     @PostMapping("/add")
