@@ -1,0 +1,10 @@
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/models/Book.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/services/implementations/BookServiceImpl.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/BookStoreApplication.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/controllers/BookController.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/exception/advisors/BookNotFoundedAdvise.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/repositories/BookRepository.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/exception/BookNotFoundedException.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/dtos/BookDto.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/services/BookService.java
+/Users/lcastillo/IdeaProjects/miniBookStore/src/main/java/com/grid/BookStore/converters/BookMapper.java
