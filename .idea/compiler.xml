@@ -10,7 +10,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="miniBookStore" target="1.5" />
+      <module name="miniBookStore" target="19" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="miniBookStore" options="-parameters" />
+    </option>
   </component>
 </project>
