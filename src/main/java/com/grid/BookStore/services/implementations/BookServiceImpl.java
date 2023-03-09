@@ -1,32 +1,31 @@
 package com.grid.BookStore.services.implementations;
 
-import com.grid.BookStore.converters.BookToBookDtoConverter;
+import com.grid.BookStore.converters.BookMapper;
 import com.grid.BookStore.dtos.BookDto;
 import com.grid.BookStore.exception.BookNotFoundedException;
 import com.grid.BookStore.models.Book;
 import com.grid.BookStore.repositories.BookRepository;
 import com.grid.BookStore.services.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@AllArgsConstructor
 public class BookServiceImpl implements BookService {
-    @Autowired
-    private BookRepository bookRepository;
 
-    @Autowired
-    private BookToBookDtoConverter bookToBookDtoConverter;
+    private BookRepository bookRepository;
+    private BookMapper bookMapper;
 
     @Override
     public BookDto addBook(final Book book) {
-        return bookToBookDtoConverter.convert(bookRepository.save(book));
+        return bookMapper.modelToDto(bookRepository.save(book));
     }
 
     @Override
     public BookDto getBook(final Long id) {
         return bookRepository.findById(id)
-                             .map(bookToBookDtoConverter::convert)
+                             .map(bookMapper::modelToDto)
                              .orElseThrow(() -> new BookNotFoundedException(id));
     }
 
@@ -38,7 +37,7 @@ public class BookServiceImpl implements BookService {
                                 book.setId(foundedBook.getId());
                                 return bookRepository.save(book);
                             })
-                             .map(bookToBookDtoConverter::convert)
+                             .map(bookMapper::modelToDto)
                              .orElseThrow(() -> new BookNotFoundedException(id));
     }
 
