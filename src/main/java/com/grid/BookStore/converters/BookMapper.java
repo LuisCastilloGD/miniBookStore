@@ -1,7 +1,7 @@
 package com.grid.BookStore.converters;
 
 import com.grid.BookStore.models.Book;
-import com.grid.BookStore.dtos.BookDto;
+import com.grid.BookStore.models.dtos.BookDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

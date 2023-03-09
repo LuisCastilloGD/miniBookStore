@@ -1,4 +1,4 @@
-package com.grid.BookStore.dtos;
+package com.grid.BookStore.models.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

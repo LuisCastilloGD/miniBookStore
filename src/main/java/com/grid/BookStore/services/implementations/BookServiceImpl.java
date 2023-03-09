@@ -1,7 +1,7 @@
 package com.grid.BookStore.services.implementations;
 
 import com.grid.BookStore.converters.BookMapper;
-import com.grid.BookStore.dtos.BookDto;
+import com.grid.BookStore.models.dtos.BookDto;
 import com.grid.BookStore.exception.BookNotFoundedException;
 import com.grid.BookStore.models.Book;
 import com.grid.BookStore.repositories.BookRepository;

@@ -1,6 +1,6 @@
 package com.grid.BookStore.services;
 
-import com.grid.BookStore.dtos.BookDto;
+import com.grid.BookStore.models.dtos.BookDto;
 import com.grid.BookStore.models.Book;
 import org.springframework.stereotype.Service;
 
