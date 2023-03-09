@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -17,7 +18,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 @Entity
-@Builder
+@Table(name = "book", schema="book_store")
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
