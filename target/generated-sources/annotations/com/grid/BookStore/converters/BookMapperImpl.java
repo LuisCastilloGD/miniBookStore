@@ -1,15 +1,13 @@
 package com.grid.BookStore.converters;
 
-import com.grid.BookStore.models.dtos.BookDto;
-import com.grid.BookStore.models.dtos.BookDto.BookDtoBuilder;
 import com.grid.BookStore.models.Book;
-import com.grid.BookStore.models.Book.BookBuilder;
+import com.grid.BookStore.models.dtos.BookDto;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-09T15:18:57-0600",
+    date = "2023-03-09T16:39:53-0600",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 19.0.1 (Homebrew)"
 )
 @Component
@@ -21,15 +19,15 @@ public class BookMapperImpl implements BookMapper {
             return null;
         }
 
-        BookDtoBuilder bookDto = BookDto.builder();
+        BookDto bookDto = new BookDto();
 
-        bookDto.id( book.getId() );
-        bookDto.title( book.getTitle() );
-        bookDto.author( book.getAuthor() );
-        bookDto.price( book.getPrice() );
-        bookDto.stock( book.getStock() );
+        bookDto.setId( book.getId() );
+        bookDto.setTitle( book.getTitle() );
+        bookDto.setAuthor( book.getAuthor() );
+        bookDto.setPrice( book.getPrice() );
+        bookDto.setStock( book.getStock() );
 
-        return bookDto.build();
+        return bookDto;
     }
 
     @Override
@@ -38,14 +36,14 @@ public class BookMapperImpl implements BookMapper {
             return null;
         }
 
-        BookBuilder book = Book.builder();
+        Book book = new Book();
 
-        book.id( bookDto.getId() );
-        book.title( bookDto.getTitle() );
-        book.author( bookDto.getAuthor() );
-        book.price( bookDto.getPrice() );
-        book.stock( bookDto.getStock() );
+        book.setId( bookDto.getId() );
+        book.setTitle( bookDto.getTitle() );
+        book.setAuthor( bookDto.getAuthor() );
+        book.setPrice( bookDto.getPrice() );
+        book.setStock( bookDto.getStock() );
 
-        return book.build();
+        return book;
     }
 }
