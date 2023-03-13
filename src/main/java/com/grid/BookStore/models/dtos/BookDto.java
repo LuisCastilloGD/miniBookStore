@@ -1,11 +1,14 @@
 package com.grid.BookStore.models.dtos;
 
+import com.grid.BookStore.models.Author;
+import com.grid.BookStore.models.Page;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 public class BookDto {
@@ -16,8 +19,11 @@ public class BookDto {
     @NotBlank
     private String title;
 
-    @NotBlank
-    private String author;
+    @NotNull
+    private List<Author> authors;
+
+    @NotNull
+    private List<Page> pages;
 
     @Positive
     private BigDecimal price;
