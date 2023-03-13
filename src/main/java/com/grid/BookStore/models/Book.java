@@ -1,9 +1,12 @@
 package com.grid.BookStore.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +19,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "book", schema="book_store")
@@ -34,8 +38,13 @@ public class Book {
     private String title;
     @NonNull
     @NotNull
-    @NotBlank
-    private String author;
+    @ManyToMany(targetEntity = Author.class, fetch = FetchType.LAZY)
+    private List<Author> authors;
+
+    @NonNull
+    @NotNull
+    @OneToMany(targetEntity = Page.class, fetch = FetchType.LAZY)
+    private List<Page> pages;
 
     @NonNull
     @NotNull
