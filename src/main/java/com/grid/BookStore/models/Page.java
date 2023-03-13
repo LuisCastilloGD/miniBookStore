@@ -31,7 +31,7 @@ public class Page {
     private String content;
 
     @NonNull
-    @NotBlank
+    @NotNull
     private Integer number;
 
 }
