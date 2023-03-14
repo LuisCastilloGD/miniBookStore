@@ -1,13 +1,6 @@
 package com.grid.BookStore.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -37,12 +30,10 @@ public class Book {
     @NotBlank
     private String title;
     @NonNull
-    @NotNull
     @ManyToMany(targetEntity = Author.class, fetch = FetchType.LAZY)
     private List<Author> authors;
 
     @NonNull
-    @NotNull
     @OneToMany(targetEntity = Page.class, fetch = FetchType.LAZY)
     private List<Page> pages;
 
