@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,8 +14,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
-import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Table(name = "author", schema="book_store")
@@ -31,9 +34,5 @@ public class Author {
     @NotNull
     @NotBlank
     private String name;
-    @NonNull
-    @NotNull
-    @NotBlank
-    private String lastname;
 
 }
