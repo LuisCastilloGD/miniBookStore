@@ -8,6 +8,8 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring")
 public interface BookMapper {
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
+
     BookDto modelToDto(Book book);
+
     Book dtoToModel(BookDto bookDto);
 }

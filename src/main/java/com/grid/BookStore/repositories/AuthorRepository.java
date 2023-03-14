@@ -14,14 +14,13 @@ public interface AuthorRepository extends CrudRepository<Author, Long> {
     Optional<Author> findByName(String name);
 
     @Query(nativeQuery = true, value = "SELECT * FROM author " +
-           "WHERE id IN(" +
-           "" +
-           "SELECT authors_id FROM " +
-           "book_authors AS ba JOIN  " +
-           "        book_pages AS bp ON bp.book_id=ba.book_id JOIN " +
-           "page ON pages_id = id" +
-           "    WHERE id = ?1" +
-           ")")
+                                       "WHERE id IN(" +
+                                       "" +
+                                       "SELECT authors_id FROM " +
+                                       "book_authors AS ba JOIN  " +
+                                       "        book_pages AS bp ON bp.book_id=ba.book_id JOIN " +
+                                       "page ON pages_id = id" +
+                                       "    WHERE id = ?1" +
+                                       ")")
     List<Author> findAuthorsByPageId(Long id);
-
 }

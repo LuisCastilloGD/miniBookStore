@@ -16,6 +16,4 @@ public class PageNotFoundedAdvise {
     public String pageNotFoundHandler(final PageNotFoundedException e) {
         return e.getMessage();
     }
-
-
 }

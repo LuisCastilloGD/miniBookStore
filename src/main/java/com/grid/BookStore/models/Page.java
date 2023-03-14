@@ -15,12 +15,13 @@ import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
-@Table(name = "page", schema="book_store")
+@Table(name = "page", schema = "book_store")
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 public class Page {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,5 +34,4 @@ public class Page {
     @NonNull
     @NotNull
     private Integer number;
-
 }

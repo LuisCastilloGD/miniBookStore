@@ -1,7 +1,5 @@
 package com.grid.BookStore.models.dtos;
 
-import com.grid.BookStore.models.Author;
-import com.grid.BookStore.models.Page;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -28,5 +26,4 @@ public class BookDto {
 
     @Positive
     private Long stock;
-
 }

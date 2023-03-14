@@ -1,6 +1,5 @@
 package com.grid.BookStore.models.dtos;
 
-import com.grid.BookStore.models.Book;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -20,7 +19,4 @@ public class PageDto {
     @NonNull
     @NotNull
     private Integer number;
-
-
-//    private Book book;
 }

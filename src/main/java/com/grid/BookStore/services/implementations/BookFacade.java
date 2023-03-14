@@ -34,11 +34,11 @@ public class BookFacade {
     private final PageMapper pageMapper;
 
     //Books CRUD
-    public BookDto addBook(Book book){
-        List<Author> authors =book.getAuthors()
-                                  .stream()
-                                  .map(author -> authorService.addAuthor(author))
-                                  .toList();
+    public BookDto addBook(Book book) {
+        List<Author> authors = book.getAuthors()
+                                   .stream()
+                                   .map(author -> authorService.addAuthor(author))
+                                   .toList();
         book.setAuthors(authors);
         List<Page> pages = book.getPages()
                                .stream()
@@ -48,81 +48,85 @@ public class BookFacade {
         return bookMapper.modelToDto(bookService.addBook(book));
     }
 
-    public BookDto getBook(Long id){
+    public BookDto getBook(Long id) {
         return bookMapper.modelToDto(bookService.getBook(id));
     }
-    public BookDto editBook(Long id, Book book){
-        return bookMapper.modelToDto(bookService.editBook(id,book));
+
+    public BookDto editBook(Long id, Book book) {
+        return bookMapper.modelToDto(bookService.editBook(id, book));
     }
 
-    public void deleteBook(Long id){
+    public void deleteBook(Long id) {
         bookService.deleteBook(id);
     }
 
     //Author CRUD
-    public AuthorDto addAuthor(Author author){
+    public AuthorDto addAuthor(Author author) {
         return authorMapper.modelToDto(authorService.addAuthor(author));
     }
 
-    public AuthorDto getAuthor(Long id){
-        return  authorMapper.modelToDto(authorService.getAuthor(id));
+    public AuthorDto getAuthor(Long id) {
+        return authorMapper.modelToDto(authorService.getAuthor(id));
     }
 
-    public AuthorDto editAuthor(Long id, Author author){
-        return  authorMapper.modelToDto(authorService.editAuthor(id,author));
+    public AuthorDto editAuthor(Long id, Author author) {
+        return authorMapper.modelToDto(authorService.editAuthor(id, author));
     }
-    public void deleteAuthor(Long id){
+
+    public void deleteAuthor(Long id) {
         Author thisAuthor = authorService.getAuthor(id);
         List<Book> books = bookService.findByAuthor(thisAuthor.getName());
         books.forEach(book -> {
             List<Author> authors = book.getAuthors();
-            authors.removeIf(author -> { return author.getName().equals(thisAuthor.getName());});
+            authors.removeIf(author -> {
+                return author.getName().equals(thisAuthor.getName());
+            });
         });
         authorService.deleteAuthor(id);
     }
 
     //Pages CRUD
-    public PageDto addPage(Page page){
+    public PageDto addPage(Page page) {
         return pageMapper.modelToDto(pageService.addPage(page));
     }
 
-    public PageDto getPage(Long id){
-        return  pageMapper.modelToDto(pageService.getPage(id));
+    public PageDto getPage(Long id) {
+        return pageMapper.modelToDto(pageService.getPage(id));
     }
 
-    public PageDto editPage(Long id, Page page){
-        return  pageMapper.modelToDto(pageService.editPage(id,page));
+    public PageDto editPage(Long id, Page page) {
+        return pageMapper.modelToDto(pageService.editPage(id, page));
     }
-    public void deletePage(Long id){
+
+    public void deletePage(Long id) {
         List<Book> books = bookService.findAllBooksFromAuthorsPage(id);
         books.forEach(book -> {
             List<Page> pages = book.getPages();
-            pages.removeIf(page ->{
-                return page.getId().equals(id); });
+            pages.removeIf(page -> {
+                return page.getId().equals(id);
+            });
         });
         pageService.deletePage(id);
     }
 
-
     //QUERIES
-    public List<BookDto> getBooksByAuthorName(String name){
+    public List<BookDto> getBooksByAuthorName(String name) {
         return bookService.findByAuthor(name).stream().map(bookMapper::modelToDto).toList();
     }
 
-    public List<PageDto> getPagesByAuthorName(String name){
+    public List<PageDto> getPagesByAuthorName(String name) {
         return pageService.findPagesByAuthor(name).stream().map(pageMapper::modelToDto).toList();
     }
 
-    public List<PageDto> getNPagesByAuthorName(String name, Long n){
-        return pageService.findNPagesByAuthor(name,n).stream().map(pageMapper::modelToDto).toList();
+    public List<PageDto> getNPagesByAuthorName(String name, Long n) {
+        return pageService.findNPagesByAuthor(name, n).stream().map(pageMapper::modelToDto).toList();
     }
 
-    public List<AuthorDto> getAuthorsByPageId(Long id){
+    public List<AuthorDto> getAuthorsByPageId(Long id) {
         return authorService.findAuthorsByPageId(id).stream().map(authorMapper::modelToDto).toList();
     }
 
-    public List<BookDto> getAllBooksFromAuthorsPage(Long id){
+    public List<BookDto> getAllBooksFromAuthorsPage(Long id) {
         return bookService.findAllBooksFromAuthorsPage(id).stream().map(bookMapper::modelToDto).toList();
     }
-
 }

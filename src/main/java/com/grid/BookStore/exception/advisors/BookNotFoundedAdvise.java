@@ -16,6 +16,4 @@ public class BookNotFoundedAdvise {
     public String bookNotFoundHandler(final BookNotFoundedException e) {
         return e.getMessage();
     }
-
-
 }
