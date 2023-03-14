@@ -36,41 +36,32 @@ public class BookFacade {
 
     //Books CRUD
     public BookDto addBook(Book book){
-
         List<Author> authors =book.getAuthors()
                                   .stream()
                                   .map(author -> authorService.addAuthor(author))
                                   .toList();
-
         book.setAuthors(authors);
-
         List<Page> pages = book.getPages()
                                .stream()
                                .map(page -> pageService.addPage(page))
                                .toList();
-
         book.setPages(pages);
-
         return bookMapper.modelToDto(bookService.addBook(book));
     }
 
     public BookDto getBook(Long id){
-
         return bookMapper.modelToDto(bookService.getBook(id));
     }
     public BookDto editBook(Long id, Book book){
-
         return bookMapper.modelToDto(bookService.editBook(id,book));
     }
 
     public void deleteBook(Long id){
-
         bookService.deleteBook(id);
     }
 
     //Author CRUD
     public AuthorDto addAuthor(Author author){
-
         return authorMapper.modelToDto(authorService.addAuthor(author));
     }
 
@@ -82,12 +73,17 @@ public class BookFacade {
         return  authorMapper.modelToDto(authorService.editAuthor(id,author));
     }
     public void deleteAuthor(Long id){
+        Author thisAuthor = authorService.getAuthor(id);
+        List<Book> books = bookService.findByAuthor(thisAuthor.getName());
+        books.forEach(book -> {
+            List<Author> authors = book.getAuthors();
+            authors.removeIf(author -> { return author.getName().equals(thisAuthor.getName());});
+        });
         authorService.deleteAuthor(id);
     }
 
     //Pages CRUD
     public PageDto addPage(Page page){
-
         return pageMapper.modelToDto(pageService.addPage(page));
     }
 
@@ -99,6 +95,11 @@ public class BookFacade {
         return  pageMapper.modelToDto(pageService.editPage(id,page));
     }
     public void deletePage(Long id){
+        List<Book> books = bookService.findAllBooksFromAuthorsPage(id);
+        books.forEach(book -> {
+            List<Page> pages = book.getPages();
+            pages.removeIf(page -> page.getId().equals(id));
+        });
         pageService.deletePage(id);
     }
 
