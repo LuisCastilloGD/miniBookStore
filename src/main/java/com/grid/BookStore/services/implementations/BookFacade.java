@@ -9,7 +9,6 @@ import com.grid.BookStore.models.Page;
 import com.grid.BookStore.models.dtos.AuthorDto;
 import com.grid.BookStore.models.dtos.BookDto;
 import com.grid.BookStore.models.dtos.PageDto;
-import com.grid.BookStore.repositories.BookRepository;
 import com.grid.BookStore.services.AuthorService;
 import com.grid.BookStore.services.BookService;
 import com.grid.BookStore.services.PageService;
@@ -98,7 +97,8 @@ public class BookFacade {
         List<Book> books = bookService.findAllBooksFromAuthorsPage(id);
         books.forEach(book -> {
             List<Page> pages = book.getPages();
-            pages.removeIf(page -> page.getId().equals(id));
+            pages.removeIf(page ->{
+                return page.getId().equals(id); });
         });
         pageService.deletePage(id);
     }
