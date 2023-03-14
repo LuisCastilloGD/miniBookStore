@@ -19,11 +19,9 @@ public class BookDto {
     @NotBlank
     private String title;
 
-    @NotNull
-    private List<Author> authors;
+    private List<AuthorDto> authors;
 
-    @NotNull
-    private List<Page> pages;
+    private List<PageDto> pages;
 
     @Positive
     private BigDecimal price;
